@@ -1,49 +1,41 @@
-console.log("hello world")
 
-document.getElementById('menu-trigger').addEventListener('click', sideMenuAppears);
-document.getElementById('menu-close').addEventListener('click', sideMenuDisappears);
-document.getElementById('menu-1-button-side').addEventListener('click', sideMenuDisappears);
-document.getElementById('menu-2-button-side').addEventListener('click', sideMenuDisappears);
-document.getElementById('menu-3-button-side').addEventListener('click', sideMenuDisappears);
-document.getElementById('menu-4-button-side').addEventListener('click', sideMenuDisappears);
+/* =========================================
+   MOBILE MENU
+   Works on GitHub Pages and closes after navigation.
+========================================= */
+(function () {
+  "use strict";
 
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileNav = document.getElementById("mobileNav");
 
-function sideMenuAppears() {
-  // console.log('sideMenuAppears() is active');
-  document.getElementById('side-menu').classList.add('show-menu');
-}
+  if (!menuBtn || !mobileNav) return;
 
-function sideMenuDisappears() {
-  // console.log('sideMenuDisappears() is active');
-  document.getElementById('side-menu').classList.remove('show-menu');
-}
- /*Dropdown-menu*/
-function menuThreeShow(){
-  document.getElementById('menu-3').classList.add('show');
-  document.getElementById('menu-4').classList.remove('show');
-}
-function menuFourShow(){
-  document.getElementById('menu-3').classList.remove('show');
-  document.getElementById('menu-4').classList.add('show');
-}
-document.getElementById('menu-3-button').addEventListener('mouseover', menuThreeShow);
-document.getElementById('menu-4-button').addEventListener('mouseover', menuFourShow);
-/*Menu-hide*/
-function menusHide() {
-  document.getElementById('menu-3').classList.remove('show');
-  document.getElementById('menu-4').classList.remove('show');
-}
-document.getElementById('menu-3').addEventListener('mouseleave', menusHide);
-document.getElementById('menu-4').addEventListener('mouseleave', menusHide);
-/*phone-section*/
+  function setMenuOpen(isOpen) {
+    mobileNav.classList.toggle("show", isOpen);
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  }
 
+  menuBtn.addEventListener("click", function () {
+    const isOpen = menuBtn.getAttribute("aria-expanded") !== "true";
+    setMenuOpen(isOpen);
+  });
 
-document.getElementById('phone-button').addEventListener('click', phoneNumberAppears);
-document.getElementById('close-icon').addEventListener('click', phoneNumberDisappears);
+  mobileNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setMenuOpen(false);
+    });
+  });
 
-function phoneNumberAppears() {
-  document.getElementById('phone-number').classList.add('show-phone-number');
-}
-function phoneNumberDisappears() {
-  document.getElementById('phone-number').classList.remove('show-phone-number');
-}
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setMenuOpen(false);
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 900) setMenuOpen(false);
+  });
+
+  setMenuOpen(false);
+})();
