@@ -21,7 +21,1246 @@
 >
 
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================================
+   COLOURS
+========================================= */
+
+:root {
+  --green: #5d765f;
+  --deep-green: #314737;
+  --sage: #aeb9a5;
+  --cream: #f5f1e8;
+  --paper: #fbfaf6;
+  --taupe: #d9d2c7;
+  --brown: #8a7969;
+  --text: #263329;
+  --white: #ffffff;
+
+  --shadow:
+    0 18px 50px rgba(49, 71, 55, 0.12);
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1160px, calc(100% - 40px));
+  margin: auto;
+}
+
+
+/* =========================================
+   TOP ANNOUNCEMENT
+========================================= */
+
+.announcement {
+  background: var(--deep-green);
+  color: #f7f4eb;
+  text-align: center;
+  padding: 9px 15px;
+
+  font-size: 11px;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(251, 250, 246, 0.95);
+  backdrop-filter: blur(12px);
+
+  border-bottom:
+    1px solid rgba(49, 71, 55, 0.12);
+}
+
+.nav {
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+/* LOGO */
+
+.logo {
+  text-align: center;
+  line-height: 0.85;
+}
+
+.logo .main,
+.logo .sub {
+  display: block;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+
+  letter-spacing: 3.5px;
+  color: var(--green);
+}
+
+.logo small {
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 7px;
+  letter-spacing: 3px;
+
+  color: var(--brown);
+}
+
+
+/* NAVIGATION */
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav a {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #47574b;
+
+  transition: 0.25s;
+}
+
+nav a:hover {
+  color: var(--green);
+}
+
+
+/* HEADER BUTTONS */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ig-btn,
+
+.ig-btn {
+  color: var(--green);
+}
+
+
+
+.ig-btn:hover {
+  background: var(--green);
+  color: white;
+}
+
+
+
+
+/* MOBILE MENU BUTTON */
+
+.menu {
+  display: none;
+
+  background: none;
+  border: 0;
+
+  font-size: 28px;
+  color: var(--deep-green);
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   MOBILE NAV
+========================================= */
+
+.mobile-nav {
+  display: none;
+
+  position: fixed;
+
+  top: 72px;
+  left: 0;
+  right: 0;
+
+  background: var(--paper);
+
+  z-index: 999;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-nav a {
+  display: block;
+
+  padding: 13px;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #e5e1d8;
+}
+
+.mobile-nav .mobile-book {
+  background: var(--green);
+  color: white;
+
+  text-align: center;
+
+  margin-top: 10px;
+
+  border: 0;
+}
+
+
+/* BOOKING BUTTONS */
+.book-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid var(--green);
+  border-radius: 3px;
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+.book-btn:hover {
+  background: var(--deep-green);
+  border-color: var(--deep-green);
+  color: white;
+}
+.nav-book {
+  white-space: nowrap;
+}
+.hero .book-btn {
+  background: #eef0e8;
+  border-color: #eef0e8;
+  color: var(--deep-green);
+}
+.hero .book-btn:hover {
+  background: white;
+  border-color: white;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  min-height: 720px;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(37, 55, 43, 0.80),
+      rgba(37, 55, 43, 0.35),
+      rgba(37, 55, 43, 0.08)
+    ),
+
+    url(
+      "https://images.unsplash.com/photo-1675016405470-da1af15be648?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    )
+    center / cover;
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      transparent 0 18%,
+      rgba(0,0,0,0.08) 55%,
+      rgba(0,0,0,0.20)
+    );
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1160px, calc(100% - 40px));
+
+  color: white;
+}
+
+.kicker {
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(64px, 9vw, 112px);
+
+  font-weight: 500;
+
+  line-height: 0.82;
+
+  max-width: 720px;
+}
+
+.hero p {
+  font-size: 14px;
+
+  letter-spacing: 2.5px;
+
+  margin: 28px 0;
+
+  text-transform: uppercase;
+}
+
+.hero .book-btn {
+  border-color: white;
+
+  background: #eef0e8;
+
+  color: var(--deep-green);
+}
+
+
+/* =========================================
+   INSTAGRAM PROFILE
+========================================= */
+
+.profile {
+  background: var(--paper);
+
+  padding: 78px 0 50px;
+
+  border-bottom: 1px solid #e7e2d8;
+}
+
+.profile-grid {
+  display: grid;
+
+  grid-template-columns: 180px 1fr;
+
+  gap: 45px;
+
+  align-items: center;
+}
+
+
+/* PROFILE LOGO */
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  padding: 10px;
+
+  background: #f1eee6;
+
+  border: 1px solid #ddd6ca;
+
+  box-shadow: var(--shadow);
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+}
+
+.profile-pic span {
+  font-family: "Cormorant Garamond", serif;
+
+  color: var(--green);
+
+  font-size: 23px;
+
+  line-height: 0.85;
+}
+
+
+/* PROFILE TEXT */
+
+.profile-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+.profile h2 {
+  font-size: 29px;
+
+  font-weight: 600;
+}
+
+.handle {
+  color: #718174;
+
+  font-size: 13px;
+}
+
+.profile-stats {
+  display: flex;
+
+  gap: 26px;
+
+  margin: 9px 0;
+
+  font-size: 13px;
+}
+
+.profile-desc {
+  max-width: 760px;
+
+  font-size: 13px;
+
+  color: #526055;
+}
+
+.profile-desc strong {
+  color: var(--green);
+}
+
+.profile-actions {
+  margin-top: 17px;
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.profile-actions a {
+  padding: 10px 20px;
+
+  border-radius: 5px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-size: 12px;
+}
+
+.profile-actions a.secondary {
+  background: #ebe8df;
+
+  color: var(--text);
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.intro {
+  padding: 100px 0;
+
+  background: var(--cream);
+}
+
+.intro-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 3px;
+
+  color: var(--brown);
+
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 65px;
+
+  line-height: 0.9;
+
+  font-weight: 500;
+
+  color: var(--deep-green);
+
+  margin-bottom: 22px;
+}
+
+.intro p {
+  font-size: 14px;
+
+  color: #59655b;
+
+  max-width: 560px;
+}
+
+.intro p + p {
+  margin-top: 17px;
+}
+
+.intro-photo {
+  min-height: 540px;
+
+  position: relative;
+
+  background:
+
+    linear-gradient(
+      rgba(49,71,55,0.06),
+      rgba(49,71,55,0.06)
+    ),
+
+    url(
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1000&q=85"
+    )
+    center / cover;
+}
+
+.intro-photo::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 20px;
+
+  border:
+    1px solid rgba(255,255,255,0.65);
+}
+
+.quote {
+  margin-top: 28px;
+
+  border-left: 2px solid var(--green);
+
+  padding-left: 17px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 23px;
+
+  color: var(--green);
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services {
+  padding: 100px 0;
+
+  background: #e9eee6;
+}
+
+.section-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+  gap: 30px;
+
+  margin-bottom: 45px;
+}
+
+.section-head p {
+  max-width: 450px;
+
+  font-size: 13px;
+
+  color: #647067;
+}
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+.card {
+  background: white;
+
+  box-shadow:
+    0 7px 30px rgba(50,65,53,0.08);
+
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+
+  box-shadow: var(--shadow);
+}
+
+.card-img {
+  height: 290px;
+
+  background-position: center;
+
+  background-size: cover;
+}
+
+
+/* SERVICE IMAGES */
+
+.card:nth-child(1) .card-img {
+
+  background-image:
+    url(
+      "premiumfacialtreatment.jpg"
+    );
+
+}
+
+.card:nth-child(2) .card-img {
+
+  background-image:
+    url(
+      "relaxation.avif"
+    );
+
+}
+
+.card:nth-child(3) .card-img {
+
+  background-image:
+    url(
+      "unnamed.png"
+    );
+
+}
+
+.card:nth-child(4) .card-img {
+
+  background-image:
+    url(
+      "ecace864-347d-4f12-ace6-6d8653774ae7.jpg"
+    );
+
+}
+
+.card:nth-child(5) .card-img {
+
+  background-image:
+    url(
+      "mahdi-dastmard-REYY2_lO7KI-unsplash.jpg"
+    );
+
+}
+
+.card:nth-child(6) .card-img {
+
+  background-image:
+    url(
+      "tetiana-shadrina-4c8JRwxycOI-unsplash (1).jpg"
+    );
+
+}
+.card:nth-child(7) .card-img {
+
+  background-image:
+    url(
+      "dryhead.jpg"
+    );
+}
+  
+  
+.card:nth-child(8) .card-img {
+
+  background-image:
+    url(
+      "https://raw.githubusercontent.com/Sach202022/Sach202022.github.io/refs/heads/main/foot.avif"
+    );  
+}
+
+.card:nth-child(9) .card-img {
+
+  background-image:
+    url(
+      "armhand.avif"
+    );
+
+}  
+  
+.card-body {
+  padding: 22px;
+}
+
+.card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 29px;
+
+  color: var(--deep-green);
+
+  line-height: 1.05;
+}
+
+.card p {
+  font-size: 11px;
+
+  color: #6b756d;
+
+  margin-top: 8px;
+}
+
+
+/* =========================================
+   INSTAGRAM GALLERY
+========================================= */
+
+.instagram {
+  padding: 100px 0;
+
+  background: var(--paper);
+}
+
+.instagram-head {
+  text-align: center;
+
+  max-width: 680px;
+
+  margin: 0 auto 45px;
+}
+
+.instagram-head h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 65px;
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  color: var(--deep-green);
+}
+
+.instagram-head p {
+  font-size: 13px;
+
+  color: #667169;
+
+  margin: 16px auto 23px;
+}
+
+.insta-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+.insta-tile {
+  aspect-ratio: 1;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--taupe);
+}
+
+.insta-tile::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(49,71,55,0);
+
+  transition: 0.25s;
+}
+
+.insta-tile:hover::after {
+  background: rgba(49,71,55,0.18);
+}
+
+.insta-tile div {
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+
+  background-position: center;
+
+  transition: 0.4s;
+}
+
+.insta-tile:hover div {
+  transform: scale(1.05);
+}
+
+
+/* GALLERY PHOTOS */
+
+.insta-tile:nth-child(1) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=800&q=85"
+    );
+
+}
+
+.insta-tile:nth-child(2) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1783066070372-a1b0fffb7c53?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(3) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1572274679890-ddb14d22553e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(4) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1592494066226-e5fd3904b25c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(5) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1601428636031-7f1610200aee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(6) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1620733719521-fa0625956f5c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(7) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1544472991-1324437fe348?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+.insta-tile:nth-child(8) div {
+
+  background-image:
+    url(
+      "https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    );
+
+}
+
+
+/* =========================================
+   INFORMATION BAR
+========================================= */
+
+.info {
+  background: var(--deep-green);
+
+  color: white;
+
+  padding: 65px 0;
+}
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.info-box {
+  text-align: center;
+
+  padding: 15px 30px;
+
+  border-right:
+    1px solid rgba(255,255,255,0.2);
+}
+
+.info-box:last-child {
+  border: 0;
+}
+
+.info-box h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 28px;
+
+  font-weight: 500;
+}
+
+.info-box p,
+.info-box a,
+.info-box address {
+  font-size: 12px;
+
+  color: #dce3da;
+
+  font-style: normal;
+}
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  background: #223429;
+
+  color: white;
+
+  padding: 60px 0 25px;
+}
+
+.footer-grid {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  align-items: center;
+}
+
+.footer-logo .main,
+.footer-logo .sub {
+  color: white;
+}
+
+.footer-logo small {
+  color: #ccd6cc;
+}
+
+.footer-ig a {
+  border:
+    1px solid rgba(255,255,255,0.35);
+
+  padding: 10px 15px;
+
+  font-size: 11px;
+}
+
+.footer-copy {
+  font-size: 10px;
+
+  color: #bfcabe;
+
+  margin-top: 35px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid rgba(255,255,255,0.15);
+
+  text-align: center;
+}
+
+
+/* =========================================
+   POPUP MESSAGE
+========================================= */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 25px;
+
+  transform:
+    translate(-50%, 20px);
+
+  background: var(--deep-green);
+
+  color: white;
+
+  padding: 13px 20px;
+
+  font-size: 12px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: 0.3s;
+
+  z-index: 5000;
+}
+
+.toast.show {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  nav {
+    display: none;
+  }
+
+  .nav-actions .ig-btn {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    justify-items: center;
+  }
+
+  .profile-top {
+    justify-content: center;
+  }
+
+  .profile-stats {
+    justify-content: center;
+  }
+
+  .profile-desc {
+    margin: auto;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255,255,255,0.2);
+
+    padding: 22px;
+  }
+
+  .info-box:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =========================================
+   PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .nav {
+    height: 72px;
+  }
+
+  .logo .main,
+  .logo .sub {
+    font-size: 21px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero h1 {
+    font-size: 67px;
+  }
+
+  .hero p {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .section-title,
+  .instagram-head h2 {
+    font-size: 53px;
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .section-head p {
+    margin-top: 15px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full,
+  .submit {
+    grid-column: auto;
+  }
+
+  .intro-photo {
+    min-height: 400px;
+  }
+
+  .profile-pic {
+    width: 145px;
+    height: 145px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE MENU DISPLAY
+========================================= */
+
+@media (max-width: 900px) {
+
+  .mobile-nav.show {
+    display: block;
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -100,6 +1339,10 @@
 
     <div class="nav-actions">
 
+      <a class="book-btn nav-book" href="https://book.squareup.com/appointments/ukvdd1t9yk067m/location/LKKARKJ1Q8W7K/services" target="_blank" rel="noopener noreferrer">
+        Book Now ↗
+      </a>
+
       <a
         class="ig-btn"
         href="https://www.instagram.com/thegardensparoom/"
@@ -156,6 +1399,10 @@
     Contact
   </a>
 
+  <a class="mobile-book" href="https://book.squareup.com/appointments/ukvdd1t9yk067m/location/LKKARKJ1Q8W7K/services" target="_blank" rel="noopener noreferrer">
+    Book an Appointment ↗
+  </a>
+
   
 
 </div>
@@ -185,6 +1432,10 @@
     <p>
       Beauty · Massage · Reiki · Japanese Therapy
     </p>
+
+    <a class="book-btn" href="https://book.squareup.com/appointments/ukvdd1t9yk067m/location/LKKARKJ1Q8W7K/services" target="_blank" rel="noopener noreferrer">
+      Book an Appointment ↗
+    </a>
 
     
 
@@ -444,8 +1695,7 @@
           </h3>
 
           <p>
-            Relaxing massage with an aromatic
-            wellness focus.
+            Personalized skin care focusing on Radiance, Hydration, and Age-Defying
           </p>
 
         </div>
@@ -466,8 +1716,7 @@
           </h3>
 
           <p>
-            Focused massage for areas of
-            muscular tension.
+            A gentle full-body massage designed to soothe the mind and release daily tension
           </p>
 
         </div>
@@ -488,7 +1737,8 @@
           </h3>
 
           <p>
-            A soothing treatment for tired feet.
+            Deeply warming therapy with smooth volcanic stones for ultimate muscle relief
+
           </p>
 
         </div>
@@ -509,8 +1759,7 @@
           </h3>
 
           <p>
-            A gentle pressure-point focused
-            treatment.
+            Nurturing, tailored bodywork crafted to support and comfort mothers-to-be
           </p>
 
         </div>
@@ -531,8 +1780,7 @@
           </h3>
 
           <p>
-            Targeted massage tailored to
-            individual needs.
+            Gentle energy work to balance inner harmony and restore deep calm
           </p>
 
         </div>
@@ -553,14 +1801,14 @@
           </h3>
 
           <p>
-            A gentle, calming massage experience.
+            Curated combinations of full-body massage paired with a facial treatment or reiki healing for complete renewal
           </p>
 
         </div>
 
       </article>
 
-      <!-- 1 -->
+      <!-- 7 -->
 
       <article class="card">
 
@@ -569,19 +1817,19 @@
         <div class="card-body">
 
           <h3>
-            Premium Facial Treatment
+            Dry Head Massage (add-on only)
+            
           </h3>
 
           <p>
-            Relaxing massage with an aromatic
-            wellness focus.
+            A soothing scalp massage to ease mental clarity and tension
           </p>
 
         </div>
 
       </article>
 
-      <!-- 1 -->
+      <!-- 8 -->
 
       <article class="card">
 
@@ -590,12 +1838,32 @@
         <div class="card-body">
 
           <h3>
-            Premium Facial Treatment
+            Foot Massage (add-on only)
+            
           </h3>
 
           <p>
-            Relaxing massage with an aromatic
-            wellness focus.
+            A grounding foot treatment to refresh tired feet and revive energy
+          </p>
+
+        </div>
+
+      </article>
+      
+      <!-- 9 -->
+
+      <article class="card">
+
+        <div class="card-img"></div>
+
+        <div class="card-body">
+
+          <h3>
+            Arm & Hand Massage (add-on only)
+          </h3>
+
+          <p>
+            A gentle massage focusing on upper limb tension and total relaxation
           </p>
 
         </div>
@@ -605,6 +1873,15 @@
 
 
 
+    </div>
+
+    <div style="text-align:center; margin-top:42px;">
+      <p style="margin-bottom:16px; color:#59655b; font-size:13px;">
+        Ready to relax and restore? Choose your treatment and appointment time online.
+      </p>
+      <a class="book-btn" href="https://book.squareup.com/appointments/ukvdd1t9yk067m/location/LKKARKJ1Q8W7K/services" target="_blank" rel="noopener noreferrer">
+        View Treatments &amp; Book Online ↗
+      </a>
     </div>
 
   </div>
@@ -844,6 +2121,10 @@
 
     <div class="footer-ig">
 
+      <a href="https://book.squareup.com/appointments/ukvdd1t9yk067m/location/LKKARKJ1Q8W7K/services" target="_blank" rel="noopener noreferrer" style="margin-right:12px;">
+        Book Online ↗
+      </a>
+
       <a
         href="https://www.instagram.com/thegardensparoom/"
         target="_blank"
@@ -881,7 +2162,48 @@
      JAVASCRIPT
 ========================================= -->
 
-<script src="script.js" defer></script>
+<script>
+/* =========================================
+   MOBILE MENU
+   Works on GitHub Pages and closes after navigation.
+========================================= */
+(function () {
+  "use strict";
+
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileNav = document.getElementById("mobileNav");
+
+  if (!menuBtn || !mobileNav) return;
+
+  function setMenuOpen(isOpen) {
+    mobileNav.classList.toggle("show", isOpen);
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  }
+
+  menuBtn.addEventListener("click", function () {
+    const isOpen = menuBtn.getAttribute("aria-expanded") !== "true";
+    setMenuOpen(isOpen);
+  });
+
+  mobileNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setMenuOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setMenuOpen(false);
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 900) setMenuOpen(false);
+  });
+
+  setMenuOpen(false);
+})();
+</script>
 
 
 </body>
